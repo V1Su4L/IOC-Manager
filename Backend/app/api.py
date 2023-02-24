@@ -9,6 +9,8 @@ origins = [
     "*"
 ]
 
+API_KEY = "Your API Key"
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -21,7 +23,7 @@ app.add_middleware(
 @app.get("/virustotal/{hash}")
 async def virustotal(hash: str):
     url = f"https://www.virustotal.com/api/v3/files/{hash}"
-    headers = {"x-apikey": "bfa467937a1d01a44c02e741b74d9760618fa151b4071f756b1bd57547b81565",
+    headers = {"x-apikey": API_KEY,
                "content-type": "text/plain"}
     response = requests.get(url, headers=headers)
     data = response.json()
