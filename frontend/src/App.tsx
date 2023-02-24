@@ -16,7 +16,7 @@ function App() {
 
   const handleGenerateReport = () => {
     axios
-      .post(`http://localhost:8000/virustotal/${hash}`)
+      .get(`http://localhost:8000/virustotal/${hash}`)
       .then((response) => {
         setReport(response.data);
       })
@@ -29,10 +29,11 @@ function App() {
     if (hash === "") return;
 
     axios
-      .post(`/virustotal/${hash}`)
+      .get(`/`)
       .then((response) => {
         setReport(response.data);
       })
+
       .catch((error) => {
         console.error(error);
       });
@@ -41,6 +42,14 @@ function App() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setHash(event.target.value);
   };
+
+  const test = () => {
+    axios
+    .get("/")
+    .then(function (response) {
+      console.log(response)
+    })
+  }
 
   return (
     <div>
@@ -63,6 +72,7 @@ function App() {
           </ul>
         </div>
       ) : null}
+      <p onLoad={test}></p>
     </div>
   );
 }
