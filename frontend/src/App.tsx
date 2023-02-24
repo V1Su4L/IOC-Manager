@@ -16,7 +16,7 @@ function App() {
 
   const handleGenerateReport = () => {
     axios
-      .post(`/virustotal/${hash}`)
+      .post(`http://localhost:8000/virustotal/${hash}`)
       .then((response) => {
         setReport(response.data);
       })
@@ -29,7 +29,7 @@ function App() {
     if (hash === "") return;
 
     axios
-      .get(`/virustotal/${hash}`)
+      .post(`/virustotal/${hash}`)
       .then((response) => {
         setReport(response.data);
       })
